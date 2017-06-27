@@ -38,4 +38,35 @@ public class UsuarioDao {
 		
 		
 	}
+	
+	public void altera(Usuario usuario){
+		String sql = "UPDATE usuarios SET "+
+					 "senha = ?, "+
+					 "codStatus = ?,"+
+					 "codGrupo = ? ";
+		try {
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setString(1, usuario.getSenha());
+			stmt.setLong(2, usuario.getCodStatus());
+			stmt.setLong(3, usuario.getCodGrupo());
+
+			stmt.execute();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	public void exclui(Usuario usuario){
+		String sql = "DELETE FROM usuarios WHERE codUsuario = ?";
+		
+		try {
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setLong(1, usuario.getCodUsuario());
+			
+			stmt.execute();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+	}
 }

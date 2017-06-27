@@ -8,6 +8,15 @@ public class Usuario {
 	private Integer codStatus;
 	private Integer codGrupo;
 	
+	public Usuario(String nome, String login, String senha, Integer codStatus, Integer codGrupo) {
+		super();
+		this.nome = nome;
+		this.login = login;
+		this.senha = senha;
+		this.codStatus = codStatus;
+		this.codGrupo = codGrupo;
+	}
+
 	public Long getCodUsuario() {
 		return codUsuario;
 	}
