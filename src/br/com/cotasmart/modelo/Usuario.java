@@ -7,7 +7,6 @@ public class Usuario {
 	private String senha;
 	private Integer codStatus;
 	private Integer codGrupo;
-	private String apagar;
 	public Long getCodUsuario() {
 		return codUsuario;
 	}
