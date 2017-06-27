@@ -1,0 +1,17 @@
+@CHARSET "ISO-8859-1";
+
+.centralizarTexto {
+	text-align: center;
+}
+
+body {
+  background: #FAF7F7;
+}
+
+.centralizado {
+  margin: 0 auto;
+  width: 600px;
+/*   background: #48304D; */
+  padding: 20px;
+  color: black;
+}
