@@ -17,6 +17,6 @@ public class UsuarioDao {
 		}
 	}
 	public void adiciona(Usuario usuario){
-		String sql = "";
+
 	}
 }
