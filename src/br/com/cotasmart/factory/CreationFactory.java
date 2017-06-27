@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class CreateFactory {
+public class CreationFactory {
 	private Connection connection;
 	
-	public CreateFactory() throws SQLException {
+	public CreationFactory() throws SQLException {
 		try {
 			this.connection = new ConnectionFactory().getConnection();
 		} catch (SQLException e) {

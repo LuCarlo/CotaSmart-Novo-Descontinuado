@@ -33,6 +33,7 @@ public class UsuarioDao {
 			stmt.execute();
 			
 		} catch (SQLException e) {
+			System.out.println("Erro ao incluir usuário: "+e.getMessage());
 			throw new RuntimeException(e);
 		}
 		
