@@ -26,8 +26,7 @@ public class CreateFactory {
 					"CREATE TABLE  IF NOT EXISTS gruposUsuario ( "+
 					"codGrupo INTEGER, "+
 					"nome CHARACTER VARYING (20),"+
-					"CONSTRAINT pk_grupos_usuario PRIMARY KEY (codGrupo)"
-					+ ");"+
+					"CONSTRAINT pk_grupos_usuario PRIMARY KEY (codGrupo));"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS usuarios ( "+
 					"codUsuario INTEGER NOT NULL, "+
@@ -59,24 +58,26 @@ public class CreateFactory {
 					"telefone3 CHARACTER VARYING(20), "+
 					"codUsuario INTEGER REFERENCES gruposUsuario ON DELETE CASCADE, "+
 					"codStatus INTEGER REFERENCES status ON DELETE CASCADE, "+
-					"CONSTRAINT pk_fornecedores PRIMARY KEY (codFornecedor);"+
+					"CONSTRAINT pk_fornecedores PRIMARY KEY (codFornecedor));"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS grupoProdutos ( "+
 					"codGrupoProdutos INTEGER, "+
-					"nome CHARACTER VARYING(20));"+
+					"nome CHARACTER VARYING(20),"+
+					"CONSTRAINT pk_grupoProdutos PRIMARY KEY(codGrupoProdutos) );"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS produtos ( "+
 					"codProduto INTEGER, "+
 					"nome CHARACTER VARYING (50), "+
 					"codStatus INTEGER REFERENCES status ON DELETE CASCADE, "+
-					"codGrupoProdutos REFERENCES grupoProdutos ON DELETE CASCADE, "+
-					"CONSTRAINT pk_produtos PRIMARY KEY (produtos);"+
+					"codGrupoProdutos INTEGER REFERENCES grupoProdutos ON DELETE CASCADE, "+
+					"CONSTRAINT pk_produtos PRIMARY KEY (codProduto));"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS cotacao ( "+
 					"codCotacao INTEGER, "+
-					"data DATETIME, "+
+					"data DATE, "+
 					"codUsuario INTEGER REFERENCES usuarios ON DELETE CASCADE, "+
-					"codStatus INTEGER REFERENCES status ON DELETE CASCADE	);"+
+					"codStatus INTEGER REFERENCES status ON DELETE CASCADE,"+
+					"CONSTRAINT pk_cotacao PRIMARY KEY (codCotacao) );"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS cotacaoProdutos ( "+
 					"codCotacaoProdutos INTEGER, "+
