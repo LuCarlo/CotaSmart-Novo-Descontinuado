@@ -1,13 +1,14 @@
-package br.com.cotasmart.conexao;
+package br.com.cotasmart.factory;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class ConnectionFactory {
 
 	public Connection getConnection() throws SQLException {
-		String driver = "org.postgresql.driver";
+		String driver = "org.postgresql.Driver";
 		String usuario = "postgres";
 		String senha = "";
 		String url = "jdbc:postgresql://localhost:5432/CotaSmart";
@@ -21,4 +22,6 @@ public class ConnectionFactory {
 
 		return DriverManager.getConnection(url, usuario, senha);
 	}
+	
+	
 }
