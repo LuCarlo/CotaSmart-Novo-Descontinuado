@@ -23,7 +23,7 @@ public class CreateFactory {
 					"tipo CHARACTER VARYING (1),"+
 					"CONSTRAINT pk_status PRIMARY KEY (codStatus)); "+
 					" "+
-					"CREATE TABLE  IF NOT EXISTS grupos_usuario ( "+
+					"CREATE TABLE  IF NOT EXISTS gruposUsuario ( "+
 					"codGrupo INTEGER, "+
 					"nome CHARACTER VARYING (20),"+
 					"CONSTRAINT pk_grupos_usuario PRIMARY KEY (codGrupo)"
@@ -35,7 +35,7 @@ public class CreateFactory {
 					"login CHARACTER VARYING (20), "+
 					"senha CHARACTER VARYING (10), "+
 					"codStatus INTEGER REFERENCES status ON DELETE CASCADE, "+
-					"codGrupo INTEGER REFERENCES grupos_usuario ON DELETE CASCADE, "+
+					"codGrupo INTEGER REFERENCES gruposUsuario ON DELETE CASCADE, "+
 					"CONSTRAINT pk_usuario PRIMARY KEY (codUsuario));" +
 					" "+
 					"CREATE TABLE IF NOT EXISTS uf ( "+
@@ -57,20 +57,20 @@ public class CreateFactory {
 					"telefone1 CHARACTER VARYING(20), "+
 					"telefone2 CHARACTER VARYING(20), "+
 					"telefone3 CHARACTER VARYING(20), "+
-					"codUsuario INTEGER REFERENCES grupos_usuario ON DELETE CASCADE, "+
+					"codUsuario INTEGER REFERENCES gruposUsuario ON DELETE CASCADE, "+
 					"codStatus INTEGER REFERENCES status ON DELETE CASCADE, "+
-					"CONSTRAINT pk_fornecedores PRIMARY KEY codFornecedor);"+
+					"CONSTRAINT pk_fornecedores PRIMARY KEY (codFornecedor);"+
 					" "+
-					"CREATE TABLE IF NOT EXISTS grupo_produtos ( "+
-					"codGrupo_produtos INTEGER, "+
+					"CREATE TABLE IF NOT EXISTS grupoProdutos ( "+
+					"codGrupoProdutos INTEGER, "+
 					"nome CHARACTER VARYING(20));"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS produtos ( "+
 					"codProduto INTEGER, "+
 					"nome CHARACTER VARYING (50), "+
 					"codStatus INTEGER REFERENCES status ON DELETE CASCADE, "+
-					"codGrupo_produtos REFERENCES grupo_produtos ON DELETE CASCADE, "+
-					"CONSTRAINT pk_produtos PRIMARY KEY produtos);"+
+					"codGrupoProdutos REFERENCES grupoProdutos ON DELETE CASCADE, "+
+					"CONSTRAINT pk_produtos PRIMARY KEY (produtos);"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS cotacao ( "+
 					"codCotacao INTEGER, "+
@@ -78,8 +78,8 @@ public class CreateFactory {
 					"codUsuario INTEGER REFERENCES usuarios ON DELETE CASCADE, "+
 					"codStatus INTEGER REFERENCES status ON DELETE CASCADE	);"+
 					" "+
-					"CREATE TABLE IF NOT EXISTS cotacao_produtos ( "+
-					"codCotacao_produtos INTEGER, "+
+					"CREATE TABLE IF NOT EXISTS cotacaoProdutos ( "+
+					"codCotacaoProdutos INTEGER, "+
 					"codCotacao INTEGER REFERENCES cotacao ON DELETE CASCADE, "+
 					"codProduto INTEGER REFERENCES produtos ON DELETE CASCADE, " +
 					"codFornecedor INTEGER REFERENCES fornecedores ON DELETE CASCADE);";
