@@ -16,6 +16,8 @@
 <link rel="stylesheet" type="text/css" href="css/estilo.css">
 
 
+<script type="text/javascript" src="js/funcao.js"></script>
+
 </head>
 <body>
 	<!--Import jQuery before materialize.js-->
@@ -23,39 +25,49 @@
 		src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
 
-
 	<!-- Inicio do formulário -->
-	<form class="centralizado" action="adicionaFornecedor">
+	<form name="form" class="centralizado" action="adicionaFornecedor">
 		<h5>Cadastrar Fornecedor</h5>
 		<!-- Nome -->
 		<div class="input-field col s12">
-			<input id="nomeFornecedor" type="text" name="nomeFornecedor" class="validate"> <label
-				for="nome">Nome da Empresa</label> <br />
+			<input id="nomeFornecedor" type="text" name="nomeFornecedor"
+				class="validate"> <label for="nome">Nome da Empresa</label>
+			<br />
 		</div>
 		<!-- Endereço -->
 		<div class="input-field col s12">
-			<input id="endereco" type="text" name="endereco" class="validate"> <label
-				for="nome">Endereço</label> <br />
+			<input id="endereco" type="text" name="endereco" class="validate">
+			<label for="nome">Endereço</label> <br />
 		</div>
-				<!-- Telefone 1 -->
+
+		<!-- Telefone 1 -->
+
 		<div class="input-field col s12">
-			<input id="telefone1" type="text" name="telefone1" class="validate"> <label
-				for="nome">Telefone 1</label> <br />
+			<input name="tel1" type="text" class="validate"
+				onKeyPress="MascaraTelefone(form.tel1);" maxlength="15"
+				onBlur="ValidaTelefone(form.tel1);"> <label for="tel1">Telefone
+				1</label> <br />
 		</div>
-						<!-- Telefone 2 -->
+		<!-- Telefone 2 -->
 		<div class="input-field col s12">
-			<input id="telefone2" type="text" name="telefone2" class="validate"> <label
-				for="nome">Telefone 2</label> <br />
+			<input name="tel2" type="text" class="validate"
+				onKeyPress="MascaraTelefone(form.tel2);" maxlength="15"
+				onBlur="ValidaTelefone(form.tel2);"> <label for="tel2">Telefone
+				2</label> <br />
 		</div>
-						<!-- Telefone 3 -->
+		<!-- Telefone 3 -->
 		<div class="input-field col s12">
-			<input id="telefone3" type="text" name="telefone3" class="validate"> <label
-				for="nome">Telefone 3</label> <br />
+			<input name="tel3" type="text" class="validate"
+				onKeyPress="MascaraTelefone(form.tel3);" maxlength="15"
+				onBlur="ValidaTelefone(form.tel3);"> <label for="tel2">Telefone
+				3</label> <br />
 		</div>
-						<!-- CNPJ -->
+		<!-- CNPJ -->
 		<div class="input-field col s12">
-			<input id="cnpj" type="text" name="cnpj" class="validate"> <label
-				for="nome">CNPJ</label> <br />
+			<input type="text" name="cnpj" class="validate"
+				onKeyPress="MascaraCNPJ(form.cnpj);" maxlength="18"
+				onBlur="ValidarCNPJ(form.cnpj);"> <label for="cnpj">CNPJ</label>
+			<br />
 		</div>
 		<!-- Status -->
 		<p>
@@ -66,8 +78,6 @@
 			<input class="waves-effect waves-light btn" type="submit"
 				value="Salvar" />
 		</div>
-
-
 	</form>
 </body>
 </html>
