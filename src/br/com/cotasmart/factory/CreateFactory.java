@@ -18,71 +18,71 @@ public class CreateFactory {
 	
 	public void criarTabelas() throws SQLException{
 		String SQL = "CREATE TABLE IF NOT EXISTS status ( "+
-					"cod_status INTEGER, "+
+					"codStatus INTEGER, "+
 					"nome CHARACTER VARYING (20), "+
 					"tipo CHARACTER VARYING (1),"+
-					"CONSTRAINT pk_status PRIMARY KEY (cod_status)); "+
+					"CONSTRAINT pk_status PRIMARY KEY (codStatus)); "+
 					" "+
 					"CREATE TABLE  IF NOT EXISTS grupos_usuario ( "+
-					"cod_grupo INTEGER, "+
+					"codGrupo INTEGER, "+
 					"nome CHARACTER VARYING (20),"+
-					"CONSTRAINT pk_grupos_usuario PRIMARY KEY (cod_grupo)"
+					"CONSTRAINT pk_grupos_usuario PRIMARY KEY (codGrupo)"
 					+ ");"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS usuarios ( "+
-					"cod_usuario INTEGER NOT NULL, "+
+					"codUsuario INTEGER NOT NULL, "+
 					"nome CHARACTER VARYING(50), "+
 					"login CHARACTER VARYING (20), "+
 					"senha CHARACTER VARYING (10), "+
-					"cod_status INTEGER REFERENCES status ON DELETE CASCADE, "+
-					"cod_grupo INTEGER REFERENCES grupos_usuario ON DELETE CASCADE, "+
-					"CONSTRAINT pk_usuario PRIMARY KEY (cod_usuario));" +
+					"codStatus INTEGER REFERENCES status ON DELETE CASCADE, "+
+					"codGrupo INTEGER REFERENCES grupos_usuario ON DELETE CASCADE, "+
+					"CONSTRAINT pk_usuario PRIMARY KEY (codUsuario));" +
 					" "+
 					"CREATE TABLE IF NOT EXISTS uf ( "+
-					"cod_uf INTEGER, "+
+					"codUf INTEGER, "+
 					"uf CHARACTER VARYING (2), "+
-					"CONSTRAINT pk_uf PRIMARY KEY (cod_uf));"+
+					"CONSTRAINT pk_uf PRIMARY KEY (codUf));"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS cidades ( "+
-					"cod_cidade INTEGER, "+
+					"codCidade INTEGER, "+
 					"nome CHARACTER VARYING (20), "+
-					"cod_uf INTEGER REFERENCES uf ON DELETE CASCADE, "+
-					"CONSTRAINT pk_cidades PRIMARY KEY (cod_cidade));"+
+					"codUf INTEGER REFERENCES uf ON DELETE CASCADE, "+
+					"CONSTRAINT pk_cidades PRIMARY KEY (codCidade));"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS fornecedores ("+
-					"cod_fornecedor INTEGER,"+
+					"codFornecedor INTEGER,"+
 					"nome CHARACTER VARYING (50), "+
 					"endereco CHARACTER VARYING (100), "+
-					"cod_cidade INTEGER REFERENCES cidades ON DELETE CASCADE, "+
+					"codCidade INTEGER REFERENCES cidades ON DELETE CASCADE, "+
 					"telefone1 CHARACTER VARYING(20), "+
 					"telefone2 CHARACTER VARYING(20), "+
 					"telefone3 CHARACTER VARYING(20), "+
-					"cod_usuario INTEGER REFERENCES grupos_usuario ON DELETE CASCADE, "+
-					"cod_status INTEGER REFERENCES status ON DELETE CASCADE, "+
-					"CONSTRAINT pk_fornecedores PRIMARY KEY cod_fornecedor);"+
+					"codUsuario INTEGER REFERENCES grupos_usuario ON DELETE CASCADE, "+
+					"codStatus INTEGER REFERENCES status ON DELETE CASCADE, "+
+					"CONSTRAINT pk_fornecedores PRIMARY KEY codFornecedor);"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS grupo_produtos ( "+
-					"cod_grupo_produtos INTEGER, "+
+					"codGrupo_produtos INTEGER, "+
 					"nome CHARACTER VARYING(20));"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS produtos ( "+
-					"cod_produto INTEGER, "+
+					"codProduto INTEGER, "+
 					"nome CHARACTER VARYING (50), "+
-					"cod_status INTEGER REFERENCES status ON DELETE CASCADE, "+
-					"cod_grupo_produtos REFERENCES grupo_produtos ON DELETE CASCADE, "+
+					"codStatus INTEGER REFERENCES status ON DELETE CASCADE, "+
+					"codGrupo_produtos REFERENCES grupo_produtos ON DELETE CASCADE, "+
 					"CONSTRAINT pk_produtos PRIMARY KEY produtos);"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS cotacao ( "+
-					"cod_cotacao INTEGER, "+
+					"codCotacao INTEGER, "+
 					"data DATETIME, "+
-					"cod_usuario INTEGER REFERENCES usuarios ON DELETE CASCADE, "+
-					"cod_status INTEGER REFERENCES status ON DELETE CASCADE	);"+
+					"codUsuario INTEGER REFERENCES usuarios ON DELETE CASCADE, "+
+					"codStatus INTEGER REFERENCES status ON DELETE CASCADE	);"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS cotacao_produtos ( "+
-					"cod_cotacao_produtos INTEGER, "+
-					"cod_cotacao INTEGER REFERENCES cotacao ON DELETE CASCADE, "+
-					"cod_produto INTEGER REFERENCES produtos ON DELETE CASCADE, " +
-					"cod_fornecedor INTEGER REFERENCES fornecedores ON DELETE CASCADE);";
+					"codCotacao_produtos INTEGER, "+
+					"codCotacao INTEGER REFERENCES cotacao ON DELETE CASCADE, "+
+					"codProduto INTEGER REFERENCES produtos ON DELETE CASCADE, " +
+					"codFornecedor INTEGER REFERENCES fornecedores ON DELETE CASCADE);";
 	
 		try {
 			PreparedStatement stmt = connection.prepareStatement(SQL);
