@@ -27,47 +27,55 @@
 
 	<!-- Inicio do formulário -->
 	<form name="form" class="centralizado" action="adicionaFornecedor">
-		<h5>Cadastrar Fornecedor</h5>
+		<h5 class="centralizarTexto">Cadastrar Fornecedor</h5> <br/>
 		<!-- Nome -->
 		<div class="input-field col s12">
-			<input id="nomeFornecedor" type="text" name="nomeFornecedor"
-				class="validate"> <label for="nome">Nome da Empresa</label>
-			<br />
+			<input type="text" pattern="^[a-zA-Zà-úÀ-Ú ]{2,30}$"
+				autocomplete="off"
+				title="Somente letras e acentos são permitidos. Até 30 caracteres."
+				name="nomeFornecedor" required="required" class="validate">
+			<label for="nome">Nome da Empresa</label> <br />
 		</div>
 		<!-- Endereço -->
 		<div class="input-field col s12">
-			<input id="endereco" type="text" name="endereco" class="validate">
-			<label for="nome">Endereço</label> <br />
+			<input id="endereco" type="text" name="endereco" required="required"
+				class="validate"> <label for="nome">Endereço</label> <br />
 		</div>
 
-		<!-- Telefone 1 -->
 
-		<div class="input-field col s12">
-			<input name="tel1" type="text" class="validate"
-				onKeyPress="MascaraTelefone(form.tel1);" maxlength="15"
-				onBlur="ValidaTelefone(form.tel1);"> <label for="tel1">Telefone
-				1</label> <br />
-		</div>
-		<!-- Telefone 2 -->
-		<div class="input-field col s12">
-			<input name="tel2" type="text" class="validate"
-				onKeyPress="MascaraTelefone(form.tel2);" maxlength="15"
-				onBlur="ValidaTelefone(form.tel2);"> <label for="tel2">Telefone
-				2</label> <br />
-		</div>
-		<!-- Telefone 3 -->
-		<div class="input-field col s12">
-			<input name="tel3" type="text" class="validate"
-				onKeyPress="MascaraTelefone(form.tel3);" maxlength="15"
-				onBlur="ValidaTelefone(form.tel3);"> <label for="tel2">Telefone
-				3</label> <br />
-		</div>
+		<table>
+			<tr>
+				<!-- Telefone 1 -->
+				<td><div class="input-field col s12">
+						<input name="tel1" type="tel" pattern=".{15,}" class="validate"
+							maxlength="15" onKeyPress="MascaraTelefone(form.tel1);">
+						<label for="tel1">Celular</label> <br />
+					</div></td>
+				<!-- Telefone 2 -->
+				<td>
+					<div class="input-field col s12">
+						<input name="tel2" type="tel" pattern=".{15,}" class="validate"
+							maxlength="15" onKeyPress="MascaraTelefone(form.tel2);">
+						<label for="tel2">Telefone</label> <br />
+					</div>
+				</td>
+				<!-- Telefone 3 -->
+				<td>
+					<div class="input-field col s12">
+						<input name="tel3" type="tel" pattern=".{15,}" class="validate"
+							maxlength="15" onKeyPress="MascaraTelefone(form.tel3);">
+						<label for="tel3">Telefone Comercial</label> <br />
+					</div>
+
+				</td>
+			</tr>
+		</table>
+
 		<!-- CNPJ -->
 		<div class="input-field col s12">
-			<input type="text" name="cnpj" class="validate"
-				onKeyPress="MascaraCNPJ(form.cnpj);" maxlength="18"
-				onBlur="ValidarCNPJ(form.cnpj);"> <label for="cnpj">CNPJ</label>
-			<br />
+			<input name="cnpj" type="text" pattern=".{15,}" class="validate"
+				maxlength="18" onKeyPress="MascaraCNPJ(form.cnpj);">
+			<label for="cnpj">CNPJ</label> <br />
 		</div>
 		<!-- Status -->
 		<p>

@@ -41,7 +41,8 @@ function MascaraCPF(cpf){
 function ValidaTelefone(tel){
         exp = /\(\d{2}\)\ \d{5}\-\d{4}/
         if(!exp.test(tel.value))
-                alert('Numero de Telefone Invalido!');
+        		alert("Telefone inválido");
+
 }
 
 //valida CEP
