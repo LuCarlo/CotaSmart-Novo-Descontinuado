@@ -10,11 +10,22 @@ public class Fornecedor {
 	private String telefone3;
 	private String cnpj;
 	
+	public Fornecedor(String nomeFornecedor, String telefone1, String cnpj) {
+		this.nomeFornecedor = nomeFornecedor;
+		this.telefone1 = telefone1;
+		this.cnpj = cnpj;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return super.equals(obj);
+		if (obj == null) {
+			return false;
+		}
+		Fornecedor outroFornecedor = (Fornecedor) obj;
+		
+		return this.cnpj == outroFornecedor.cnpj;
 	}
+	
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub

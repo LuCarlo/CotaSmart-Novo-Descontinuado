@@ -20,28 +20,32 @@ public class AdicionaFornecedorServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		
+
 		String nomeFornecedor = request.getParameter("nomeFornecedor");
 		String endereco = request.getParameter("endereco");
 		String telefone1 = request.getParameter("telefone1");
 		String telefone2 = request.getParameter("telefone2");
 		String telefone3 = request.getParameter("telefone3");
 		String cnpj = request.getParameter("cnjp");
-		
-		Fornecedor fornecedor = new Fornecedor();
-		fornecedor.setNomeFornecedor(nomeFornecedor);
+
+		Fornecedor fornecedor = new Fornecedor(cnpj, telefone1, nomeFornecedor);
+
 		fornecedor.setEndereco(endereco);
-		fornecedor.setTelefone1(telefone1);
 		fornecedor.setTelefone2(telefone2);
 		fornecedor.setTelefone3(telefone3);
-		fornecedor.setCnpj(cnpj);
+
+		FornecedorDao dao = new FornecedorDao();
+
+		if (!dao.verificaSeExiste(fornecedor.getCnpj())) {
+			dao.adiciona(fornecedor);
+			out.println("<html><body><h1>");
+			out.println("Empresa: " + fornecedor.getNomeFornecedor() + " adicionado com sucesso");
+			out.println("</h1></body></html>");	
+		}else{
+			System.out.println("Fornecedor já cadastrado");
+		}
+
 		
-		FornecedorDao dao = new FornecedorDao ();
-		dao.adiciona(fornecedor);
-		
-		out.println("<html><body><h1>");
- 		out.println("Empresa: "+fornecedor.getNomeFornecedor()+" adicionado com sucesso");
- 		out.println("</h1></body></html>");
 	}
 
 }
