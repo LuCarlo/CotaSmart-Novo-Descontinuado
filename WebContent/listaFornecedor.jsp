@@ -4,21 +4,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Empresas cadastradas</title>
 </head>
 <body>
 
 	<%@ page
 		import="java.util.*,
-br.com.cotasmart.dao.*,
-br.com.cotasmart.modelo.*"%>
-
-  <table>
-		<%
+		br.com.cotasmart.dao.*,
+		br.com.cotasmart.modelo.*"%>
+		
+				<%
 			FornecedorDao dao = new FornecedorDao();
 			List<Fornecedor> fornecedores = dao.getLista();
 			for (Fornecedor fornecedor : fornecedores) {
 		%>
+
+	<table>
 		<tr>
 			<td><%=fornecedor.getCodFornecedor()%></td>
 			<td><%=fornecedor.getNome()%></td>
@@ -32,10 +33,6 @@ br.com.cotasmart.modelo.*"%>
 			}
 		%>
 	</table>
-
-
-
-
 
 </body>
 </html>
