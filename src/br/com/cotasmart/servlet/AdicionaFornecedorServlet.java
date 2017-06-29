@@ -35,19 +35,20 @@ public class AdicionaFornecedorServlet extends HttpServlet {
 		fornecedor.setTelefone1(telefone1);
 		fornecedor.setTelefone2(telefone2);
 		fornecedor.setTelefone3(telefone3);
+		
 
 		FornecedorDao dao = new FornecedorDao();
 
-		if (!dao.verificaSeExiste(fornecedor.getCnpj())) {
+//		if (!dao.verificaSeExiste(fornecedor.getCnpj())) {
 			dao.adiciona(fornecedor);
 			out.println("<html><body><h1>");
 			out.println("Empresa: " + fornecedor.getNome() + " adicionado com sucesso");
 			out.println("</h1></body></html>");	
-		}else{
-			out.println("<html><body><h1>");
-			out.println("Empresa já cadastrada!");
-			out.println("</h1></body></html>");
-		}
+//		}else{
+//			out.println("<html><body><h1>");
+//			out.println("Empresa já cadastrada!");
+//			out.println("</h1></body></html>");
+//		}
 
 		
 	}

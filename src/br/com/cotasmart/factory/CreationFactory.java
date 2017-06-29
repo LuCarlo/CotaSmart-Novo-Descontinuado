@@ -18,18 +18,18 @@ public class CreationFactory {
 	
 	public void criarTabelas() throws SQLException{
 		String SQL = "CREATE TABLE IF NOT EXISTS status ( "+
-					"codStatus INTEGER, "+
+					"codStatus SERIAL, "+
 					"nome CHARACTER VARYING (20), "+
 					"tipo CHARACTER VARYING (1),"+
 					"CONSTRAINT pk_status PRIMARY KEY (codStatus)); "+
 					" "+
 					"CREATE TABLE  IF NOT EXISTS gruposUsuario ( "+
-					"codGrupo INTEGER, "+
+					"codGrupo SERIAL, "+
 					"nome CHARACTER VARYING (20),"+
 					"CONSTRAINT pk_grupos_usuario PRIMARY KEY (codGrupo));"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS usuarios ( "+
-					"codUsuario INTEGER NOT NULL, "+
+					"codUsuario SERIAL, "+
 					"nome CHARACTER VARYING(50), "+
 					"login CHARACTER VARYING (20), "+
 					"senha CHARACTER VARYING (10), "+
@@ -38,18 +38,18 @@ public class CreationFactory {
 					"CONSTRAINT pk_usuario PRIMARY KEY (codUsuario));" +
 					" "+
 					"CREATE TABLE IF NOT EXISTS uf ( "+
-					"codUf INTEGER, "+
+					"codUf SERIAL, "+
 					"uf CHARACTER VARYING (2), "+
 					"CONSTRAINT pk_uf PRIMARY KEY (codUf));"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS cidades ( "+
-					"codCidade INTEGER, "+
+					"codCidade SERIAL, "+
 					"nome CHARACTER VARYING (20), "+
 					"codUf INTEGER REFERENCES uf ON DELETE CASCADE, "+
 					"CONSTRAINT pk_cidades PRIMARY KEY (codCidade));"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS fornecedores ("+
-					"codFornecedor INTEGER,"+
+					"codFornecedor SERIAL,"+
 					"nome CHARACTER VARYING (50), "+
 					"endereco CHARACTER VARYING (100), "+
 					"codCidade INTEGER REFERENCES cidades ON DELETE CASCADE, "+
@@ -61,26 +61,26 @@ public class CreationFactory {
 					"CONSTRAINT pk_fornecedores PRIMARY KEY (codFornecedor));"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS grupoProdutos ( "+
-					"codGrupoProdutos INTEGER, "+
+					"codGrupoProdutos SERIAL, "+
 					"nome CHARACTER VARYING(20),"+
 					"CONSTRAINT pk_grupoProdutos PRIMARY KEY(codGrupoProdutos) );"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS produtos ( "+
-					"codProduto INTEGER, "+
+					"codProduto SERIAL, "+
 					"nome CHARACTER VARYING (50), "+
 					"codStatus INTEGER REFERENCES status ON DELETE CASCADE, "+
 					"codGrupoProdutos INTEGER REFERENCES grupoProdutos ON DELETE CASCADE, "+
 					"CONSTRAINT pk_produtos PRIMARY KEY (codProduto));"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS cotacao ( "+
-					"codCotacao INTEGER, "+
+					"codCotacao SERIAL, "+
 					"data DATE, "+
 					"codUsuario INTEGER REFERENCES usuarios ON DELETE CASCADE, "+
 					"codStatus INTEGER REFERENCES status ON DELETE CASCADE,"+
 					"CONSTRAINT pk_cotacao PRIMARY KEY (codCotacao) );"+
 					" "+
 					"CREATE TABLE IF NOT EXISTS cotacaoProdutos ( "+
-					"codCotacaoProdutos INTEGER, "+
+					"codCotacaoProdutos SERIAL, "+
 					"codCotacao INTEGER REFERENCES cotacao ON DELETE CASCADE, "+
 					"codProduto INTEGER REFERENCES produtos ON DELETE CASCADE, " +
 					"codFornecedor INTEGER REFERENCES fornecedores ON DELETE CASCADE);";
