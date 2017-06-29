@@ -42,7 +42,9 @@ public class AdicionaFornecedorServlet extends HttpServlet {
 			out.println("Empresa: " + fornecedor.getNomeFornecedor() + " adicionado com sucesso");
 			out.println("</h1></body></html>");	
 		}else{
-			System.out.println("Fornecedor já cadastrado");
+			out.println("<html><body><h1>");
+			out.println("Empresa já cadastrada!");
+			out.println("</h1></body></html>");
 		}
 
 		
