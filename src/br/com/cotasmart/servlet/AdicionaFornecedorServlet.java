@@ -13,7 +13,7 @@ import br.com.cotasmart.dao.FornecedorDao;
 import br.com.cotasmart.modelo.Fornecedor;
 
 @SuppressWarnings("serial")
-@WebServlet("/AdicionaFornecedor")
+@WebServlet("/adicionaFornecedor")
 public class AdicionaFornecedorServlet extends HttpServlet {
 
 	@Override
@@ -21,16 +21,18 @@ public class AdicionaFornecedorServlet extends HttpServlet {
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 
-		String nomeFornecedor = request.getParameter("nomeFornecedor");
+		String nomeFornecedor = request.getParameter("nome");
 		String endereco = request.getParameter("endereco");
 		String telefone1 = request.getParameter("telefone1");
 		String telefone2 = request.getParameter("telefone2");
 		String telefone3 = request.getParameter("telefone3");
 		String cnpj = request.getParameter("cnjp");
 
-		Fornecedor fornecedor = new Fornecedor(cnpj, telefone1, nomeFornecedor);
-
+		Fornecedor fornecedor = new Fornecedor();
+		fornecedor.setNome(nomeFornecedor);
+		fornecedor.setCnpj(cnpj);
 		fornecedor.setEndereco(endereco);
+		fornecedor.setTelefone1(telefone1);
 		fornecedor.setTelefone2(telefone2);
 		fornecedor.setTelefone3(telefone3);
 
@@ -39,7 +41,7 @@ public class AdicionaFornecedorServlet extends HttpServlet {
 		if (!dao.verificaSeExiste(fornecedor.getCnpj())) {
 			dao.adiciona(fornecedor);
 			out.println("<html><body><h1>");
-			out.println("Empresa: " + fornecedor.getNomeFornecedor() + " adicionado com sucesso");
+			out.println("Empresa: " + fornecedor.getNome() + " adicionado com sucesso");
 			out.println("</h1></body></html>");	
 		}else{
 			out.println("<html><body><h1>");

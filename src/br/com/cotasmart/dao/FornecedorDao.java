@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.cotasmart.factory.ConnectionFactory;
 import br.com.cotasmart.modelo.Fornecedor;
@@ -23,12 +25,12 @@ public class FornecedorDao {
 		
 		
 		String sql = "INSERT INTO fornecedores ("+
-					"nomeFornecedor, endereco, telefone1, telefone2, telefone3, cnjp) "+
+					"nome, endereco, telefone1, telefone2, telefone3, cnjp) "+
 					"VALUES (?,?,?,?,?,?) ";
 		try {
 			
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1, fornecedor.getNomeFornecedor());
+			stmt.setString(1, fornecedor.getNome());
 			stmt.setString(2, fornecedor.getEndereco());
 			stmt.setString(3, fornecedor.getTelefone1());
 			stmt.setString(4, fornecedor.getTelefone2());
@@ -43,12 +45,12 @@ public class FornecedorDao {
 	}
 	
 	public void altera(Fornecedor fornecedor){
-		String sql = "update fornecedores set nomeFornecedor=?, endereco=?, telefone1=?," +
+		String sql = "update fornecedores set nome=?, endereco=?, telefone1=?," +
 						"telefone2=?, telefone3=?, cnpj=?";
 		
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1, fornecedor.getNomeFornecedor());
+			stmt.setString(1, fornecedor.getNome());
 			stmt.setString(2, fornecedor.getEndereco());
 			stmt.setString(3, fornecedor.getTelefone1());
 			stmt.setString(4, fornecedor.getTelefone2());
@@ -75,6 +77,32 @@ public class FornecedorDao {
 			throw new RuntimeException(e);
 		}
 		
+	}
+	
+	public List<Fornecedor> getLista(){
+		try{
+			List<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
+			PreparedStatement stmt = connection.prepareStatement("select * from fornecedores");
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()){
+				Fornecedor fornecedor = new Fornecedor();
+				fornecedor.setCodFornecedor(rs.getInt("codFornecedor"));
+				fornecedor.setNome(rs.getString("nome"));
+				fornecedor.setCnpj(rs.getString("cnpj"));
+				fornecedor.setEndereco(rs.getString("endereco"));
+				fornecedor.setTelefone1(rs.getString("telefone1"));
+				fornecedor.setTelefone2(rs.getString("telefone2"));
+				fornecedor.setTelefone3(rs.getString("telefone3"));
+				
+				fornecedores.add(fornecedor);
+			}
+			rs.close();
+			stmt.close();
+			return fornecedores;
+		}catch(SQLException e){
+			throw new RuntimeException(e);	
+		}
 	}
 	
 	public boolean verificaSeExiste(String cnpj){
