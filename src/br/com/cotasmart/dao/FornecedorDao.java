@@ -25,7 +25,7 @@ public class FornecedorDao {
 		
 		
 		String sql = "INSERT INTO fornecedores ("+
-					"nome, endereco, telefone1, telefone2, telefone3, cnjp) "+
+					"nome, endereco, telefone1, telefone2, telefone3, cnpj) "+
 					"VALUES (?,?,?,?,?,?) ";
 		try {
 			
@@ -41,6 +41,7 @@ public class FornecedorDao {
 			
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
+			
 		}
 	}
 	

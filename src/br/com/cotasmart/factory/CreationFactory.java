@@ -50,6 +50,7 @@ public class CreationFactory {
 					" "+
 					"CREATE TABLE IF NOT EXISTS fornecedores ("+
 					"codFornecedor INTEGER,"+
+					"cnpj CHARACTER VARYING (20)"+	
 					"nome CHARACTER VARYING (50), "+
 					"endereco CHARACTER VARYING (100), "+
 					"codCidade INTEGER REFERENCES cidades ON DELETE CASCADE, "+
