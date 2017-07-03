@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="AdicionaUsuario.html"></jsp:include>
-<br/>
-<jsp:include page="AdicionaFornecedor.html"></jsp:include>
+
 </body>
 </html>
