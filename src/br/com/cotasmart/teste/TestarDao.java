@@ -1,21 +1,25 @@
 package br.com.cotasmart.teste;
 
-import java.sql.SQLException;
-
-import br.com.cotasmart.dao.StatusDao;
-import br.com.cotasmart.factory.CreationFactory;
-import br.com.cotasmart.modelo.Status;
+import br.com.cotasmart.dao.FornecedorDao;
+import br.com.cotasmart.modelo.Fornecedor;
 
 public class TestarDao {
 
-	public static void main(String[] args) throws SQLException {
-		CreationFactory c = new CreationFactory();
-		c.criarTabelas();
+	public static void main(String[] args) {
+		
+		Fornecedor f = new Fornecedor();
+		f.setNome("TESTE");
+		f.setTelefone1("3388-1515");
+		f.setTelefone2("3388-1515");
+		f.setTelefone3("3388-1515");
+		f.setCnpj("0000000000000");
+		f.setEndereco("Q4 00");
+		
+		FornecedorDao dao = new FornecedorDao();
+		dao.adiciona(f);
+		
+		System.out.println("Conectado");
 
-		Status status = new Status();
-		status.setNome("Status eclipse");
-		StatusDao dao = new StatusDao();
-		dao.adiciona(status);
 
 	}
 

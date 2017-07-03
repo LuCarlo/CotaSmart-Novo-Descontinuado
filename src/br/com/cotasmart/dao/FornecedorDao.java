@@ -41,6 +41,7 @@ public class FornecedorDao {
 			
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
+			
 		}
 	}
 	

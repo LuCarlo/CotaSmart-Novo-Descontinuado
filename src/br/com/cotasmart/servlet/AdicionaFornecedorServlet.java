@@ -39,7 +39,7 @@ public class AdicionaFornecedorServlet extends HttpServlet {
 
 		FornecedorDao dao = new FornecedorDao();
 
-//		if (!dao.verificaSeExiste(fornecedor.getCnpj())) {
+
 			dao.adiciona(fornecedor);
 			out.println("<html><body><h1>");
 			out.println("Empresa: " + fornecedor.getNome() + " adicionado com sucesso");
