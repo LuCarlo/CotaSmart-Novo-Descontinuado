@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html>
 <!--Import Google Icon Font-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
@@ -14,7 +12,3 @@
 
 
 <script type="text/javascript" src="js/funcao.js"></script>
-<body>
-
-</body>
-</html>

@@ -4,16 +4,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Adicionar Fornecedor</title>
-<c:import url="inicializacao/iniciarHead.jsp" />
-
 </head>
 <body>
 	<c:import url="cabecalho.jsp" />
-<%-- 	<c:import url="menu.jsp" /> --%>
-	<c:import url="inicializacao/iniciarBody.jsp" />
-	
-
-
 	<!-- Inicio do formulário -->
 	<form name="form" class="centralizado" action="adicionaFornecedor">
 		<h5 class="centralizarTexto">Cadastrar Fornecedor</h5>
